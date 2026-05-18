@@ -1,0 +1,37 @@
+{
+  "entities": {
+    "AdClick": {
+      "title": "Ad Click",
+      "description": "Tracks when a user clicks on an ad",
+      "type": "object",
+      "properties": {
+        "adId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" }
+      },
+      "required": ["timestamp"]
+    },
+    "Download": {
+      "title": "Download",
+      "description": "Tracks a video download event",
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "platform": { "type": "string" },
+        "userId": { "type": "string" }
+      },
+      "required": ["url", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/ad_clicks/{clickId}": {
+      "schema": "AdClick",
+      "description": "Collection of ad click events"
+    },
+    "/downloads/{downloadId}": {
+      "schema": "Download",
+      "description": "Collection of download events"
+    }
+  }
+}
